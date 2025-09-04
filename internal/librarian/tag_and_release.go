@@ -122,6 +122,7 @@ func (r *tagAndReleaseRunner) determinePullRequestsToProcess(ctx context.Context
 	if r.cfg.PullRequest != "" {
 		slog.Info("processing a single pull request", "pr", r.cfg.PullRequest)
 		ss := strings.Split(r.cfg.PullRequest, "/")
+		slog.Info("split num: %d, segment const: %d", len(ss), pullRequestSegments)
 		if len(ss) != pullRequestSegments {
 			return nil, fmt.Errorf("invalid pull request format: %s", r.cfg.PullRequest)
 		}
