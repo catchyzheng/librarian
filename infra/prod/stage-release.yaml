@@ -32,7 +32,7 @@ steps:
     args:
       - 'config'
       - 'user.name'
-      - 'Cloud SDK Librarian'
+      - 'Kaiqi Zheng'
   - name: gcr.io/cloud-builders/git
     id: configure-language-repo-email
     waitFor: ['configure-language-repo-name']
@@ -40,7 +40,7 @@ steps:
     args:
       - 'config'
       - 'user.email'
-      - 'cloud-sdk-librarian-robot@google.com'
+      - 'kaiqizheng@google.com'
   - name: 'us-central1-docker.pkg.dev/librarian-dev-kaiqi-4w9y99/images-dev/librarian@sha256:15938c75ca679ea32ab3f417fddd11123b480c00e760effaa6da5ec769bb50bb'
     id: stage-release
     waitFor: ['configure-language-repo-email']
