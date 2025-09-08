@@ -113,7 +113,7 @@ func runCommandWithConfig(ctx context.Context, client CloudBuildClient, ghClient
 			"_PUSH":                     fmt.Sprintf("%v", push),
 		}
 		if command == "publish-release" {
-			prs, err := ghClient.FindMergedPullRequestsWithPendingReleaseLabel(ctx, "googleapis", repository.Name)
+			prs, err := ghClient.FindMergedPullRequestsWithPendingReleaseLabel(ctx, "catchyzheng", repository.Name)
 			if err != nil {
 				slog.Error("Error finding merged pull requests for publish-release", slog.Any("err", err), slog.String("repository", repository.Name))
 				errs = append(errs, err)
