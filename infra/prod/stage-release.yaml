@@ -41,7 +41,7 @@ steps:
       - 'config'
       - 'user.email'
       - 'cloud-sdk-librarian-robot@google.com'
-  - name: 'us-central1-docker.pkg.dev/cloud-sdk-librarian-prod/images-prod/librarian'
+  - name: 'us-central1-docker.pkg.dev/librarian-dev-kaiqi-5c5mt7/images-dev/librarian'
     id: stage-release
     waitFor: ['configure-language-repo-email']
     dir: tmp
