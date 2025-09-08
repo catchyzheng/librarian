@@ -26,7 +26,7 @@ steps:
       - '--single-branch'
       - '--branch=$_BRANCH'
       - $_FULL_REPOSITORY
-  - name: 'us-central1-docker.pkg.dev/librarian-dev-kaiqi-5c5mt7/images-dev/librarian'
+  - name: 'us-central1-docker.pkg.dev/librarian-dev-kaiqi-4w9y99/images-dev/librarian@sha256:15938c75ca679ea32ab3f417fddd11123b480c00e760effaa6da5ec769bb50bb'
     id: publish-release
     waitFor: ['clone-language-repo']
     args:
