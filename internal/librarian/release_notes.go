@@ -226,12 +226,17 @@ func findLatestGenerationCommit(repo gitrepo.Repository, state *config.Librarian
 func formatReleaseNotes(repo gitrepo.Repository, state *config.LibrarianState) (string, error) {
 	librarianVersion := cli.Version()
 	var releaseSections []*releaseNoteSection
+	slog.Info("going to generate release not section. ")
 	for _, library := range state.Libraries {
+		slog.Info("checking library", "library ID", library.ID)
 		if !library.ReleaseTriggered {
+			slog.Info("not triggered", "library ID", library.ID)
 			continue
 		}
 
+		slog.Info("start ormatting", "library ID", library.ID)
 		section, err := formatLibraryReleaseNotes(repo, library)
+		slog.Info("finish formatting", "library ID", library.ID)
 		if err != nil {
 			return "", fmt.Errorf("failed to format release notes for library %s: %w", library.ID, err)
 		}
