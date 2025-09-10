@@ -6,3 +6,4 @@ libraries:
     source_roots:
       - "internal"
     tag_format: "v{version}"
+    release_triggered: true
