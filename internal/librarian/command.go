@@ -29,8 +29,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/googleapis/librarian/internal/docker"
-
 	"github.com/googleapis/librarian/internal/config"
 	"github.com/googleapis/librarian/internal/github"
 	"github.com/googleapis/librarian/internal/gitrepo"
@@ -86,11 +84,11 @@ func newCommandRunner(cfg *config.Config, ghClientFactory GitHubClientFactory, c
 		}
 	}
 	// If no container client factory is provided, use the default one.
-	if containerClientFactory == nil {
-		containerClientFactory = func(workRoot, image, userUID, userGID string) (ContainerClient, error) {
-			return docker.New(workRoot, image, userUID, userGID)
-		}
-	}
+	// if containerClientFactory == nil {
+	// 	containerClientFactory = func(workRoot, image, userUID, userGID string) (ContainerClient, error) {
+	// 		return docker.New(workRoot, image, userUID, userGID)
+	// 	}
+	// }
 
 	if cfg.APISource == "" {
 		cfg.APISource = "https://github.com/googleapis/googleapis"
@@ -139,10 +137,10 @@ func newCommandRunner(cfg *config.Config, ghClientFactory GitHubClientFactory, c
 		return nil, fmt.Errorf("failed to create GitHub client: %w", err)
 	}
 
-	container, err := containerClientFactory(cfg.WorkRoot, image, cfg.UserUID, cfg.UserGID)
-	if err != nil {
-		return nil, err
-	}
+	// container, err := containerClientFactory(cfg.WorkRoot, image, cfg.UserUID, cfg.UserGID)
+	// if err != nil {
+	// 	return nil, err
+	// }
 	return &commandRunner{
 		cfg:             cfg,
 		workRoot:        cfg.WorkRoot,
@@ -152,7 +150,7 @@ func newCommandRunner(cfg *config.Config, ghClientFactory GitHubClientFactory, c
 		librarianConfig: librarianConfig,
 		image:           image,
 		ghClient:        ghClient,
-		containerClient: container,
+		// containerClient: container,
 	}, nil
 }
 
