@@ -67,10 +67,21 @@ var (
 	}).Parse(`Librarian Version: {{.LibrarianVersion}}
 Language Image: {{.ImageVersion}}
 
+{{- range .NoteSections -}}
+{{ $noteSection := . }}
 <details><summary>{{.LibraryID}}: {{.NewVersion}}</summary>
 
 ## [{{.NewVersion}}]({{"https://github.com/"}}{{.RepoOwner}}/{{.RepoName}}/compare/{{.PreviousTag}}...{{.NewTag}}) ({{.Date}})
+{{ range .CommitSections }}
+### {{.Heading}}
+{{ range .Commits }}
+* {{.Description}} ([{{shortSHA .SHA}}]({{"https://github.com/"}}{{$noteSection.RepoOwner}}/{{$noteSection.RepoName}}/commit/{{.SHA}}))
+{{ end }}
+
+{{- end }}
 </details>
+
+{{ end }}
 `))
 
 	genBodyTemplate = template.Must(template.New("genBody").Funcs(template.FuncMap{
