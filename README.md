@@ -13,7 +13,7 @@ intended to discourage anyone from reading the code and documentation;
 it's only to set expectations. (For example, we're unlikely to accept
 feature requests for external use cases.)
 
-## Running Librarian testing
+## Running Librarian testing testing
 
 To see the current set of commands available, run:
 

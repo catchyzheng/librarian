@@ -245,7 +245,7 @@ func formatReleaseNotes(repo gitrepo.Repository, state *config.LibrarianState) (
 			continue
 		}
 
-		slog.Info("start ormatting", "library ID", library.ID)
+		slog.Info("start formatting", "library ID", library.ID)
 		section, err := formatLibraryReleaseNotes(repo, library)
 		slog.Info("finish formatting", "library ID", library.ID)
 		if err != nil {
