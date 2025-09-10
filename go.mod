@@ -1,4 +1,4 @@
-module github.com/catchyzheng/librarian
+module github.com/googleapis/librarian
 
 go 1.25.0
 
