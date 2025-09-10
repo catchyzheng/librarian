@@ -23,7 +23,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/googleapis/librarian/internal/librarian"
+	"github.com/catchyzheng/librarian/internal/librarian"
 )
 
 func main() {
