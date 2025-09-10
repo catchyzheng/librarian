@@ -163,6 +163,7 @@ func (r *initRunner) runInitCommand(ctx context.Context, outputDir string) error
 			}
 
 			// Only update one library with the given library ID.
+			slog.Info("Updating single library", "library", library.ID)
 			if err := r.updateLibrary(library); err != nil {
 				return err
 			}
@@ -174,6 +175,7 @@ func (r *initRunner) runInitCommand(ctx context.Context, outputDir string) error
 		}
 
 		// Update all libraries.
+		slog.Info("Updating all library", "library", library.ID)
 		if err := r.updateLibrary(library); err != nil {
 			return err
 		}
@@ -237,6 +239,7 @@ func (r *initRunner) runInitCommand(ctx context.Context, outputDir string) error
 // 4. Set the library's release trigger to true.
 func (r *initRunner) updateLibrary(library *config.LibraryState) error {
 	// Update the previous version, we need this value when creating release note.
+	slog.Info("Updating library", "library", library.ID)
 	library.PreviousVersion = library.Version
 	commits, err := GetConventionalCommitsSinceLastRelease(r.repo, library)
 	if err != nil {
